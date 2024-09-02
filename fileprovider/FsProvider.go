@@ -13,6 +13,7 @@ import (
 	"github.com/c00/buttercup/appconfig"
 	"github.com/c00/buttercup/fileprovider/efsindex"
 	"github.com/c00/buttercup/fileprovider/fsindex"
+	"github.com/c00/buttercup/fileprovider/s3index"
 )
 
 func NewFsProvider(conf appconfig.ProviderConfig) *FsProvider {
@@ -329,6 +330,15 @@ func fsFileInfoToFileInfo(fi fsindex.FsFileInfo) FileInfo {
 }
 
 func efsFileInfoToFileInfo(fi efsindex.EfsFileInfo) FileInfo {
+	return FileInfo{
+		Path:       fi.Path,
+		LastSynced: fi.LastSynced,
+		Updated:    fi.Updated,
+		Deleted:    fi.Deleted,
+	}
+}
+
+func s3FileInfoToFileInfo(fi s3index.S3FileInfo) FileInfo {
 	return FileInfo{
 		Path:       fi.Path,
 		LastSynced: fi.LastSynced,

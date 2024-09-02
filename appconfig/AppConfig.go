@@ -26,6 +26,7 @@ type ProviderConfig struct {
 	Type       string             `yaml:"type"`
 	FsConfig   *FsProviderConfig  `yaml:"fsConfig,omitempty"`
 	EfsConfig  *EfsProviderConfig `yaml:"efsConfig,omitempty"`
+	S3Config   *S3ProviderConfig  `yaml:"s3Config,omitempty"`
 	ClientName string             `yaml:"-"`
 }
 
@@ -39,7 +40,19 @@ type FsProviderConfig struct {
 // Used as 'remote' but accessible through some file interface
 type EfsProviderConfig struct {
 	Path       string `yaml:"path"`
-	Passphrase string `yaml:"passphrase,omitempty"`
+	Passphrase string `yaml:"passphrase"`
+}
+
+// S3 File System Provider
+type S3ProviderConfig struct {
+	Passphrase     string `yaml:"passphrase"`
+	AccessKey      string `yaml:"accessKey"`
+	SecretKey      string `yaml:"secretKey"`
+	BasePath       string `yaml:"basePath"`
+	Bucket         string `yaml:"bucket"`
+	Endpoint       string `yaml:"endpoint"`
+	ForcePathStyle bool   `yaml:"forcePathStyle"`
+	Region         string `yaml:"region"`
 }
 
 func (c *AppConfig) GetDefault() FolderConfig {
