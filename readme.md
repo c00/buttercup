@@ -20,7 +20,7 @@ It has been tested on Linux. I expect it to work just fine on macOs, but I haven
 
 - Sync multiple devices
 - Client-side encryption (like, actually private)
-- Works with any s3-compatible cloud provider
+- Works with any s3-compatible cloud provider (in theory)
 
 # Installation
 
