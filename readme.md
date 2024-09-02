@@ -1,6 +1,6 @@
 # buttercup
 
-> Sync me up, butterup
+> Sync me up, buttercup
 
 Backup local folders somewhere remote. But with privacy and security in mind. Buttercup let's you client-side encrypt your data before shipping it off to some cloud storage provider. Without the passphrase nobody will be able to see your data. (That includes you!)
 
