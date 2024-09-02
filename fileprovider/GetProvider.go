@@ -18,6 +18,8 @@ func GetProvider(conf appconfig.ProviderConfig) FileProvider {
 		return NewFsProvider(conf)
 	case TypeEfs:
 		return NewEfsProvider(conf)
+	case TypeS3:
+		return NewS3Provider(conf)
 	case TypeInMemory:
 		return NewInMemoryProvider("client")
 	}

@@ -2,17 +2,37 @@
 
 > Sync me up, butterup
 
-Backup local folders somewhere remote. But with privacy and security in mind. Has the ability to client-side encrypt your data before shipping it off to some cloud storage provider. Without the passphrase nobody will be able to see your data. (That includes you, so don't lose your passphrase...)
+Backup local folders somewhere remote. But with privacy and security in mind. Buttercup let's you client-side encrypt your data before shipping it off to some cloud storage provider. Without the passphrase nobody will be able to see your data. (That includes you!)
 
-All your files are locally encrypted before being sent off. Files can be synced to any s3-compatible storage (AWS S3, Digital Ocean Object Storage, etc.), or just to some local folder like an external harddrive or a NAS.
+All your files are locally encrypted before being sent off. Files can be synced to any s3-compatible storage (AWS S3, Digital Ocean Spaces, etc.), or just to some local folder like an external harddrive or a NAS.
 
 **Don't forget your passphrase, as you will not be able to recover your files without it!**
 
-# Current state
+# Current state: Beta
 
-Very very alpha. Some stuff needs to happen before it's even usable.
+Use at your own risk. If you lose data it's not my fault.
 
-# Usage
+Feel free to report issues, feature requests or PRs.
+
+It has been tested on Linux. I expect it to work just fine on macOs, but I haven't tried. Windows... who knows, it's windows.
+
+# Features
+
+- Sync multiple devices
+- Client-side encryption (like, actually private)
+- Works with any s3-compatible cloud provider
+
+# Installation
+
+tl;dr:
+
+```bash
+make install
+```
+
+See [install guide](./guides/installation.md).
+
+# Basic Usage
 
 ```bash
 # Show help
@@ -42,15 +62,20 @@ buttercup push [source_name]
 
 # Todo
 
-- [x] Expand commands to allow syncing of other folders
-- [ ] Implement S3 provider
+- [ ] Create tests for pushing when locked by someone else
 - [ ] Keep permissions the same
-- [x] Are we dealing with deleted files correctly? Pushing and pulling
 - [ ] check code coverage for glaring holes
 - [ ] Page indexes so we don't pull potentially millions of files into memory
-- [x] Loglevels so we can be more or less verbose
-- [ ] Some ssetup for new uses
+- [ ] Some setup for new users
 - [ ] Some Service / Monitoring for automatic syncing
+- [ ] Make password optional so you get asked every time
+- [ ] For the local folders, store index somewhere else.
+- [ ] Add command to reset a local or remote
+      Reset local is just delete the index
+      Reset remote is delete the entire fucking thing and push
+- [ ] Add command to force remove lock
+- [ ] Add command to push/pull individual files
+- [ ] Add command to ls remote
 
 # Config file
 
@@ -68,18 +93,35 @@ folders:
       fsConfig:
         path: /home/someuser/Buttercup
     remote:
-      type: encrypted-filesystem
-      efsConfig:
-        path: /media/somedevice/encrypted-buttercup-backups
-        passphrase: fBDVLCC+Qbf6j22qfjhCsPQnSA7hf+UkPJg3+D6erCA=
+      # Backup to s3
+      type: s3
+      s3Config:
+        # Passphrase for encryption / decryption.
+        passphrase: somelongpassphrasethatsreallysecure
+        # S3 Access Key
+        accessKey: youraccesskey
+        # S3 Secret Key
+        secretKey: yoursecretkey
+        # S3 Bucket name
+        bucket: bucketname
+        # Optionally a path within the bucket
+        basePath: my-buttercup-backups
+        # The endpoint (without the bucket name)
+        endpoint: https://sgp1.digitaloceanspaces.com
+        # Should be false for Digital Ocean. Your mileage may vary with other providers
+        forcePathStyle: false
+        # S3 Region
+        region: sgp1
   - name: alt
     local:
       type: filesystem
       fsConfig:
         path: /home/someuser/secret-docs
     remote:
+      # Backup to the local filesystem, use encryption
       type: encrypted-filesystem
       efsConfig:
         path: /media/somedevice/encrypted-docs
-        passphrase: 80khe0B18aFdmW+gWnfcJL61DoNPgDX5zrHGe3w6A68=
+        # Passphrase for encryption / decryption.
+        passphrase: somelongpassphrasethatsreallysecure
 ```

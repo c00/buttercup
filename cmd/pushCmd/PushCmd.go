@@ -27,6 +27,7 @@ var PushCmd = &cobra.Command{
 		}
 
 		folder := conf.GetFolder(folderName)
+		logger.Log("Pushing folder: %v...", folder.Local.GetFolderPath())
 		local := fileprovider.GetProvider(folder.Local)
 		remote := fileprovider.GetProvider(folder.Remote)
 

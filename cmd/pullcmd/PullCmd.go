@@ -27,6 +27,8 @@ var PullCmd = &cobra.Command{
 		}
 
 		folder := conf.GetFolder(folderName)
+		logger.Log("Pulling folder: %v...", folder.Local.GetFolderPath())
+
 		local := fileprovider.GetProvider(folder.Local)
 		remote := fileprovider.GetProvider(folder.Remote)
 

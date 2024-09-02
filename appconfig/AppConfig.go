@@ -30,6 +30,14 @@ type ProviderConfig struct {
 	ClientName string             `yaml:"-"`
 }
 
+func (c ProviderConfig) GetFolderPath() string {
+	if c.FsConfig != nil {
+		return c.FsConfig.Path
+	}
+
+	return "[unknown folder]"
+}
+
 // File System provider
 // Local storage, used as 'local'
 type FsProviderConfig struct {
