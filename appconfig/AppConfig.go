@@ -8,7 +8,7 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-const configFile = `config.yaml`
+const ConfigFile = `config.yaml`
 
 type AppConfig struct {
 	DefaultFolder string         `yaml:"defaultFolder"`
@@ -97,7 +97,7 @@ func LoadFromUser() (AppConfig, error) {
 		return AppConfig{}, err
 	}
 
-	configPath := filepath.Join(u.HomeDir, ".buttercup", configFile)
+	configPath := filepath.Join(u.HomeDir, ".buttercup", ConfigFile)
 	return Load(configPath)
 }
 

@@ -70,16 +70,17 @@ buttercup push [source_name]
 - [ ] Some Service / Monitoring for automatic syncing
 - [ ] Make password optional so you get asked every time
 - [ ] For the local folders, store index somewhere else.
-- [ ] Add command to reset a local or remote
-      Reset local is just delete the index
-      Reset remote is delete the entire fucking thing and push
+- [ ] Add command to reset a local or remote.  
+       Reset local is just delete the index.  
+       Reset remote is delete the entire fucking thing and push.
 - [ ] Add command to force remove lock
 - [ ] Add command to push/pull individual files
 - [ ] Add command to ls remote
+- [ ] Use multipart up/downloads for bigger files
 
 # Config file
 
-Until the setup commands are added, here's an example yaml configuration to put in `~/.buttercup/config.yaml`:
+Until the `init` commands are added, here's an example yaml configuration to put in `~/.buttercup/config.yaml`:
 
 ```yaml
 # Default configuration to run commands on if no folder name is given

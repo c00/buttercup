@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	initcmd "github.com/c00/buttercup/cmd/initCmd"
 	"github.com/c00/buttercup/cmd/pullcmd"
 	pushcmd "github.com/c00/buttercup/cmd/pushCmd"
 	synccmd "github.com/c00/buttercup/cmd/syncCmd"
@@ -21,6 +22,7 @@ func init() {
 		pullcmd.PullCmd,
 		pushcmd.PushCmd,
 		synccmd.SyncCmd,
+		initcmd.InitCmd,
 	)
 }
 

@@ -22,6 +22,8 @@ buttercup init
 
 This creates the configuration file at `~/.buttercup/config.yaml`. You should open the file and set your keys accordingly.
 
+The set passphrase is randomly generated. You can keep this, or change it to something you like. Once you've synced to the remote, you can no longer change the passphrase (as all the files are already encrypted with the old one).
+
 ## Setting up S3 remote
 
 See [this guide](./s3-remotes.md). Buttercup should be able to sync with any S3-compatible service.
