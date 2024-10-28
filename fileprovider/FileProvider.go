@@ -5,7 +5,6 @@ import (
 	"time"
 )
 
-// todo create tests for this
 type FileProvider interface {
 	//Retrieve a file from the local folder in the form of a io.reader
 	RetrieveFile(path string) (io.ReadCloser, error)

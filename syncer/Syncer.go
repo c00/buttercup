@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	"github.com/c00/buttercup/fileprovider"
-	"github.com/c00/buttercup/logger"
+	"github.com/c00/buttercup/internal/logger"
 	"github.com/c00/buttercup/source"
 )
 

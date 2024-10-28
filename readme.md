@@ -63,6 +63,7 @@ buttercup push [source_name]
 # Todo
 
 - [ ] Create tests for pushing when locked by someone else
+- [ ] Separate integration tests out
 - [ ] Keep permissions the same
 - [ ] check code coverage for glaring holes
 - [ ] Page indexes so we don't pull potentially millions of files into memory

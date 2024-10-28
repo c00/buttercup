@@ -9,7 +9,7 @@ import (
 
 	"github.com/c00/buttercup/appconfig"
 	"github.com/c00/buttercup/fileprovider"
-	"github.com/c00/buttercup/logger"
+	"github.com/c00/buttercup/internal/logger"
 	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v3"
 )

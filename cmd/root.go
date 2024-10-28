@@ -4,11 +4,12 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/c00/buttercup/cmd/daemoncmd"
 	initcmd "github.com/c00/buttercup/cmd/initCmd"
 	"github.com/c00/buttercup/cmd/pullcmd"
 	pushcmd "github.com/c00/buttercup/cmd/pushCmd"
 	synccmd "github.com/c00/buttercup/cmd/syncCmd"
-	"github.com/c00/buttercup/logger"
+	"github.com/c00/buttercup/internal/logger"
 	"github.com/spf13/cobra"
 )
 
@@ -23,6 +24,7 @@ func init() {
 		pushcmd.PushCmd,
 		synccmd.SyncCmd,
 		initcmd.InitCmd,
+		daemoncmd.DaemonCmd,
 	)
 }
 

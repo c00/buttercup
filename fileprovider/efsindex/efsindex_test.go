@@ -8,7 +8,7 @@ import (
 	"path"
 	"testing"
 
-	"github.com/c00/buttercup/logger"
+	"github.com/c00/buttercup/internal/logger"
 	"github.com/joho/godotenv"
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/stretchr/testify/assert"
